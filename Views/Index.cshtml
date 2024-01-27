@@ -1,0 +1,21 @@
+﻿@model List<Department>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestTaskApplication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+   <table>
+       @foreach( var department in Model)
+            {
+                <tr> <td> @department.ID</td> <td> @department.Name</td> <td>@department.ParentDepartmentID</td></tr>
+            }
+   </table>
+   
+</body>
+</html>

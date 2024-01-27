@@ -1,0 +1,36 @@
+﻿@model Employee
+
+<form asp-action="Edit" asp-controller="Employee">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input type="text" asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SurName" class="control-label"></label>
+        <input type="text" asp-for="SurName" class="form-control" />
+        <span asp-validation-for="SurName"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="DocNumber" class="control-label"></label>
+        <input type="number"   asp-for="DocNumber" class="form-control" />
+        <span asp-validation-for="DocNumber"></span>
+    </div>
+    <div class="form-group">
+        <select asp-items=@ViewBag.SelectList asp-for="DepartmentID"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Position" class="control-label">Position</label>
+        <input type="text" asp-for="Position" class="form-control" />
+        <span asp-validation-for="Position"></span>
+    </div>
+    <div class="form-group">
+        <input type="date" asp-for="DateOfBirth" class="form-control" />
+        <span asp-validation-for="DateOfBirth"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Сохранить изменения" class="btn btn-outline-secondary" />
+    </div>
+</form>

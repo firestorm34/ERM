@@ -1,0 +1,191 @@
+﻿@model List<Department>
+@using TestTaskApplication.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestTaskApplication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="Title"> <h2> Departments</h2></div>
+    <div asp-validation-summary="All"  class="text-danger"></div>
+    
+    <div  class="container" style="margin-top: 0px;">
+        
+        <department-tree></department-tree>
+    </div>
+    
+
+
+</body>       
+</html>
+<script>
+    
+
+    function children_list_click(obj) {
+        let grandparent = obj.parentElement.parentElement.parentElement;
+        console.log(grandparent);
+        let grandchild = grandparent.querySelector(":scope > .child_department");
+
+        if (grandchild.style["display"] == "block") {
+            grandchild.style["display"] = "none";
+            obj.innerHTML = "Show children";
+          
+        }
+        else if (grandchild.style["display"] == "none" || grandchild.style["display"] == "") {
+            grandchild.style["display"] = "block";
+            obj.innerHTML = "Hide children";
+        }
+            }
+</script>
+<style>
+
+    .anchor:hover{
+        cursor:pointer;
+        text-decoration:none !important;
+    }
+    .anchor{
+        color:white;
+    }
+
+    .row{margin-bottom:20px;}
+
+    .container{
+        
+        flex-wrap: nowrap;
+    }
+
+    .col-3{
+        overflow:hidden !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .parent_department {
+
+        position: relative;
+    }
+
+
+    .child_department {
+
+        display: none;
+        position: relative;
+        left: 15px;
+    }
+
+ html {
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 16px !important;
+    }
+
+    .Title {
+        display: flex;
+        justify-content: center;
+        padding-left: 25px;
+        padding-right: 25px;
+        width: 100%;
+        min-width: 800px;
+        margin: auto;
+        max-width: 1100px;
+        margin-top: 30px;
+    }
+
+    h2 {
+        color: #337ab7;
+        width: 100%;
+        text-align: center;
+        max-width: 1050px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.361) !important;
+        margin-bottom: 5px !important;
+    }
+
+    table {
+        overflow: scroll;
+        overflow: visible;
+        table-layout: fixed;
+        empty-cells: hide;
+        border-collapse: unset !important;
+    }
+
+    .department_table {
+        width: 100%;
+        max-width: 1100px;
+        min-width: 800px;
+        margin: auto;
+        padding-left: 25px;
+        padding-right: 25px;
+        justify-content: center;
+    }
+
+    tr {
+        display: flex;
+        align-items: center;
+    }
+    #spaceholder{
+        min-width:15px;
+        max-width:20px;
+    }
+    td, th {
+        
+        overflow: hidden;
+        padding-top: 15px;
+        flex-grow: 1;
+        min-width: 80px;
+        flex-basis: 15%;
+        height: 65px;
+        white-space: nowrap;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.361) !important;
+    }
+    th:first-child {
+        text-indent: 15px;
+    }
+
+    td:nth-child(6n+1) {
+        text-indent: 15px;
+    }
+
+    th {
+        height: fit-content !important;
+    }
+
+    .Actions {
+        position: relative;
+        min-width: 175px !important;
+    }
+
+        .Actions a {
+            width: max-content;
+            padding: 5px 11px 5px 11px !important;
+        }
+
+    #a-view {
+        background-color: #579cd8;
+        height: 35px;
+        display: inline-block;
+        color: black !important;
+    }
+
+    .child_department{
+        padding-left: 15px;
+        border-left: 2px solid #ddd;
+    }
+
+ 
+
+    tr:nth-child(2n) {
+        background-color: #f6f6f6;
+    }
+
+    thead {
+        padding-bottom: 12px !important;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.361) !important;
+    }
+    
+</style>
+
+

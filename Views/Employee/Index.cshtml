@@ -1,0 +1,87 @@
+﻿@model List<Employee>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestTaskApplication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <div class="container">
+        <row>   <div class="col-1"><a asp-action="Create" class="btn btn-primary create-btn" id="a-edit">Создать сотрудника</a></div> </row>
+        <div class="row header">
+            <div class="col-1"> FirstName </div>
+            <div class="col-1">LastName</div>
+            <div class="col-1">Doc Number</div>
+            <div class="col-2">Department</div>
+            <div class="col-2">Position</div>
+            <div class="col-1"> Date Of Birth</div>
+            <div class="col-1"> Age</div>
+            <div class="col-1"></div>
+            <div class="col-1"> </div>
+        </div>
+
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (Employee emp in Model)
+                {
+
+                    <div class="row" style="flex-wrap:nowrap; overflow:hidden" > 
+                        <div class="col-1">
+                            @emp.FirstName
+                        </div>
+                        <div class="col-1">
+                            @emp.SurName
+                        </div>
+                        <div class="col-1">
+                            @emp.DocNumber
+                        </div>
+                        <div class="col-2">
+                            @emp.Department.Name
+                        </div>
+                        <div class="col-2">
+                            @emp.Position
+                        </div>
+                        <div class="col-1">
+                            @emp.DateOfBirth
+                        </div>
+                        <div class="col-1">
+                            @emp.Age
+                        </div>
+
+
+                   
+
+                            <div class="col-1"><a style="margin-left: -20px;" asp-action="Edit" asp-route-id=@emp.ID class="btn btn-primary" id="a-edit">Изменить</a></div>
+                            <div class="col-1"> <a asp-action="Delete" asp-route-id=@emp.ID class="btn btn-danger" id="a-edit">Удалить</a> </div>
+                        </div>
+
+                }
+            }
+    </div>
+
+
+</body>
+</html>
+<style>
+
+    .create-btn {
+        width: 200px;
+        margin-bottom: 20px;
+        margin-left: -20px;
+    }
+    .row.header div{
+        font-size: 16px;
+        
+    }
+    .row > * {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid black;
+    }
+</style>
